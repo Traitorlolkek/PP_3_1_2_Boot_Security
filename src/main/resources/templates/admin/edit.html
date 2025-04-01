@@ -8,27 +8,28 @@
 <body>
 <h1>Create/Update User</h1>
 
-<form th:action="@{/admin/{id}(id=${user.id})}" th:object="${user}" method="patch">
+<form th:action="@{/admin/{id}/edit(id=${user.id})}" th:object="${user}" method="post">
+  <input type="hidden" name="_method" value="patch">
 
   <!-- Имя пользователя -->
   <label for="username">Username</label>
-  <input type="text" id="username" th:field="*{username}" required/>
+  <input type="text" id="username" th:field="*{username}"/>
 
   <!-- Пароль -->
   <label for="password">Password</label>
-  <input type="password" id="password" th:field="*{password}" required/>
+  <input type="password" id="password" th:field="*{password}"/>
 
   <!-- Имя -->
   <label for="name">Name</label>
-  <input type="text" id="name" th:field="*{name}" required/>
+  <input type="text" id="name" th:field="*{name}"/>
 
   <!-- Фамилия -->
   <label for="surname">Surname</label>
-  <input type="text" id="surname" th:field="*{surname}" required/>
+  <input type="text" id="surname" th:field="*{surname}"/>
 
   <!-- Возраст -->
   <label for="age">Age</label>
-  <input type="number" id="age" th:field="*{age}" min="0" required/>
+  <input type="number" id="age" th:field="*{age}" min="0"/>
 
   <!-- Роли -->
   <label for="roles">Roles</label><br>
