@@ -3,32 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create/Update User</title>
+  <title>Create User</title>
 </head>
 <body>
 <h1>Create/Update User</h1>
 
-<form th:action="@{/admin/create}" th:object="${user}" method="post">
+<form th:action="@{/admin}" th:object="${user}" method="post">
 
   <!-- Имя пользователя -->
   <label for="username">Username</label>
   <input type="text" id="username" th:field="*{username}" required/>
+  <div style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"> username error</div>
 
   <!-- Пароль -->
   <label for="password">Password</label>
   <input type="password" id="password" th:field="*{password}" required/>
+  <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"> password error</div>
 
   <!-- Имя -->
   <label for="name">Name</label>
   <input type="text" id="name" th:field="*{name}" required/>
+  <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> name error</div>
 
   <!-- Фамилия -->
   <label for="surname">Surname</label>
   <input type="text" id="surname" th:field="*{surname}" required/>
+  <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"> surname error</div>
 
   <!-- Возраст -->
   <label for="age">Age</label>
   <input type="number" id="age" th:field="*{age}" min="0" required/>
+  <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"> age error</div>
 
   <!-- Роли -->
   <label for="roles">Roles</label><br>

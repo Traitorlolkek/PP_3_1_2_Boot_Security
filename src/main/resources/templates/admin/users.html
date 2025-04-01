@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Users</h1>
-<a href="/admin/create">Create New User</a>
+<a href="/admin/new">Create New User</a>
 <table>
     <tr>
         <th>ID</th>
@@ -19,8 +19,11 @@
             <td th:text="${user.id}"></td>
             <td th:text="${user.username}"></td>
             <td>
-                <a th:href="@{/admin/edit/{id}(id=${user.id})}">Edit</a>
-                <a th:href="@{/admin/delete/{id}(id=${user.id})}">Delete</a>
+                <a th:href="@{/admin/{id}/edit(id=${user.id})}">Edit</a>
+                <form th:action="@{/admin/{id}(id=${user.id})}" method="post" style="display:inline;">
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit">Delete</button>
+                </form>
             </td>
         </tr>
     </th:block>
