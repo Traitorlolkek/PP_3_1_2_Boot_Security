@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create/Update User</title>
+  <title>Update User</title>
 </head>
 <body>
 <h1>Create/Update User</h1>
 
-<form th:action="@{/admin/{id}/edit(id=${user.id})}" th:object="${user}" method="post">
-  <input type="hidden" name="_method" value="patch">
+<form th:action="@{/admin/{id}/(id=${user.id})}" th:object="${user}" method="post">
 
   <!-- Имя пользователя -->
   <label for="username">Username</label>

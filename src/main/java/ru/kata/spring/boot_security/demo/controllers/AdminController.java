@@ -57,7 +57,7 @@ public class AdminController {
         return "admin/edit";
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/{id}")
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @PathVariable("id") Long id, Model model){
         if (bindingResult.hasErrors()) {
             model.addAttribute("roles", roleService.findAll());

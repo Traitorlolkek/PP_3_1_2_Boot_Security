@@ -5,10 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
@@ -23,19 +20,19 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Long id;
     @Column(unique = true)
-    @NotNull(message = "The field must not be empty")
+    @NotEmpty(message = "The field must not be empty")
     @Size(min = 4, max = 20, message = "The field must be between 4 and 20 characters")
     private String username;
     @Column
-    @NotNull(message = "The field must not be empty")
-    @Size(min = 4, max = 20, message = "The field must be between 4 and 20 characters")
+    @NotEmpty(message = "The field must not be empty")
+    @Size(min = 4, max = 80, message = "The field must be between 4 and 20 characters")
     private String password;
     @Column
-    @NotNull(message = "The field must not be empty")
+    @NotEmpty(message = "The field must not be empty")
     @Size(min = 2, max = 15, message = "The field must be between 2 and 15 characters")
     private String name;
     @Column
-    @NotNull(message = "The field must not be empty")
+    @NotEmpty(message = "The field must not be empty")
     @Size(min = 2, max = 20, message = "The field must be between 2 and 20 characters")
     private String surname;
     @Column
