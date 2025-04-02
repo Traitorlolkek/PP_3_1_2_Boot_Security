@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class UserServiceImp implements UserService {
     public User update(Long id, User user) {
         Optional<User> updatableUserOptional = userRepository.findById(id);
         if (updatableUserOptional.isEmpty()) {
-            throw new RuntimeException("User not found with ID " + id);
+            throw new EntityNotFoundException("User not found with ID " + id);
         }
         User updatableUser = updatableUserOptional.get();
         updatableUser.setUsername(user.getUsername());
@@ -64,12 +65,12 @@ public class UserServiceImp implements UserService {
     @Override
     public User findById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with ID " + id));
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID " + id));
     }
 
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username " + username));
+                .orElseThrow(() -> new EntityNotFoundException("User not found with username " + username));
     }
 }

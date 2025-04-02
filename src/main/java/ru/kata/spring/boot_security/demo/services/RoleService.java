@@ -6,9 +6,6 @@ import java.util.List;
 
 public interface RoleService {
     Role add(Role role);
-    void delete(Long id);
-    Role update(Long id, Role role);
-    Role findById(Long id);
     List<Role> findAll();
 
 }
